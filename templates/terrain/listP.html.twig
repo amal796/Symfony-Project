@@ -1,0 +1,29 @@
+
+{% block body %}
+<h1 align="center">Liste Terrains</h1><hr>
+    <table id="produits" class="table table-striped" >
+        <thead>
+        <tr>
+
+            <td>Nom</td>
+            <td>Description</td>
+            <td></td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for terrain in terrains %}
+                <div class="col-md-4">
+                <a> {{ terrain.nomTerrain }}</a>
+                <a> {{ terrain.descriptionTerrain }}</a>
+                <img src="{{ asset('uploads/' ~terrain.imageTerrain) }}"  ,class="img-fluid"/>
+                </div>
+
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

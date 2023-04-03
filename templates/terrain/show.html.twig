@@ -1,0 +1,45 @@
+{% extends 'backoffice.html.twig' %}
+
+
+{% block title %}Terrain{% endblock %}
+
+{% block body %}
+    <h1>Terrain</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdTerrain</th>
+                <td>{{ terrain.idTerrain }}</td>
+            </tr>
+            <tr>
+                <th>ImageTerrain</th>
+                <td><img src="{{ asset('uploads/' ~terrain.imageTerrain) }}" style=" width:60px; height:50px; " alt=""/></td>
+            </tr>
+            <tr>
+                <th>DescriptionTerrain</th>
+                <td>{{ terrain.descriptionTerrain }}</td>
+            </tr>
+            <tr>
+                <th>NomTerrain</th>
+                <td>{{ terrain.nomTerrain }}</td>
+            </tr>
+            <tr>
+                <th>SurfaceTerrain</th>
+                <td>{{ terrain.surfaceTerrain }}</td>
+            </tr>
+            <tr>
+                <th>lieu</th>
+                <td>{{ terrain.lieu }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+<a href="{{ path('app_terrain_index') }}">back to list</a>
+<a href="{{ path('app_terrain_edit', {'idTerrain': terrain.idTerrain}) }}">edit</a>
+
+    {{ include('terrain/_delete_form.html.twig') }}
+    
+
+    <a href="{{ path('app_reservation_new', {'idTerrain': terrain.idTerrain}) }}">RESERVER</a>
+{% endblock %}

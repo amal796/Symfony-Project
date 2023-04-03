@@ -1,0 +1,38 @@
+{% extends 'frontoffice.html.twig' %}
+
+
+{% block title %}Terrains{% endblock %}
+
+{% block body %}
+    <h1>Les terrains disponibles</h1>
+
+        <tbody>
+                    <label for="critere">Trier par :</label>
+                    <ul>
+                        <li><a href="{{ path('order_By_Nom')}}">Trie par Nom</a></li>
+                        <li><a href="{{ path('order_By_Description')}}">Trie par Description</a></li>
+                    </ul>
+        <div class="row">
+        {% for terrain in terrains %}
+                <div class="col-md-4">
+                <img src="{{ asset('uploads/' ~terrain.imageTerrain) }}"  ,class="img-fluid"/>
+                <a> {{ terrain.descriptionTerrain }}</a>
+                <a href="{{ path('app_reservation_newfront') }}">Réserver</a> 
+                </div>
+
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </div>
+        <div style="margin-left:1000px;">
+            <a class="btn btn-info" href="{{path('app_terrain_pdf')}}"> Exporter PDF </a>
+
+         </div>
+        </tbody>
+
+
+    
+
+{% endblock %}

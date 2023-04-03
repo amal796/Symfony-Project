@@ -1,0 +1,48 @@
+{% extends 'backoffice.html.twig' %}
+
+
+{% block title %}Terrain index{% endblock %}
+
+{% block body %}
+    <h1>Terrain index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th >IdTerrain</th>
+                <th>ImageTerrain</th>
+                <th>DescriptionTerrain</th>
+                <th>NomTerrain</th>
+                <th>SurfaceTerrain</th>
+                <th>lieu</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for terrain in terrains %}
+            <tr>
+                <td>{{ terrain.idTerrain }}</td>
+                <td><img src="{{ asset('uploads/' ~terrain.imageTerrain) }}" style=" width:60px; height:50px; " alt=""/></td>
+                <td>{{ terrain.descriptionTerrain }}</td>
+                <td>{{ terrain.nomTerrain }}</td>
+                <td>{{ terrain.surfaceTerrain }}</td>
+                <td>{{ terrain.lieu }}</td>
+
+                <td>
+                    <a href="{{ path('app_terrain_show', {'idTerrain': terrain.idTerrain}) }}">show</a>
+                    <a href="{{ path('app_terrain_edit', {'idTerrain': terrain.idTerrain}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_terrain_new') }}">Create new</a>
+    <div style="margin-left:1000px;">
+            <a class="btn btn-info" href="{{path('generator_service')}}"> Exporter PDF </a>
+         </div>
+{% endblock %}

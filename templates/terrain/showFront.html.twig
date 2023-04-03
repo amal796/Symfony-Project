@@ -1,0 +1,50 @@
+{% extends 'frontoffice.html.twig' %}
+{% block title %}Liste des terrains {% endblock %}
+
+{% block body %}
+ <!-- Service Start -->
+    <div class="service">
+  <div class="container">
+    <div class="section-header text-center">
+      <h1 style="margin-bottom:40px;margin-top:-170px; color:#ed174a;">Liste des Terrains</h1>
+    </div> 
+    
+    <div class="row">
+      {% for terrain in terrains %}
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="service-item">
+          <img src="{{ asset('uploads/' ~terrain.imageTerrain) }}" style=" width:360px; height:250px; " alt="">
+          <center><h2 >{{ terrain.descriptionTerrain }}</h2></center>
+          <p><strong style="color:#ed174a;">Lieu:</strong> {{ terrain.lieu }}</p>        
+           <center> <a href="{{ path('app_terrain_frontShow', {'idTerrain': terrain.idTerrain}) }}" class="btn btn-primary">SHOW</a></center>
+         <center> <a href="{{ path('app_reservation_newfront') }}" class="btn btn-primary">Réserver</a></center>
+         <center> <a href="{{ path('app_terrain_map',{'idTerrain':terrain.idTerrain}) }}" class="btn btn-primary">Voir dans la map</a></center>
+
+        </div>
+      </div>
+      {% else %}
+      <div class="col">
+        <p class="text-center">Aucun événement trouvé.</p>
+        
+      </div>
+      {% endfor %}
+      <div >
+                            <form method="post" action="{{ path('terrain_recherche') }}">
+                                <input type="text" name="search" class="btn btn-outline-info">
+                                <input type="submit" value="{% trans %}Recherche{% endtrans %}" class="btn btn-info">
+                            </form>
+                        </div>  
+    </div>
+    <div style="margin-law:20px;">
+        <a class="btn btn-info" href="{{ path('order_By_Nom')}}"> Trier Par Nom </a>
+        </div>
+        
+        <div style="margin-law:20px;">
+        <a class="btn btn-info" href="{{ path('order_By_Description')}}">Trier Par Description  </a>
+        </div>
+        
+  </div>
+</div>
+    <!-- Service End -->
+    
+{% endblock %}

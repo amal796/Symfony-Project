@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>List of Terrains</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: #ffffff;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            
+        }
+        th {
+            background-color: #ffffff;
+        }
+        img {
+            max-width: 100px;
+            height: auto;
+        }
+        
+    </style>
+</head>
+<body>
+<h1>Play Zone</h1>
+<br><br>
+    <h1 style="text-align: center;">List of Terrains</h1>
+    <table border="2">
+        <thead>
+            <tr>
+                <th style="color:#009CFF;">ID</th>
+                <th style="color:#009CFF;">Name</th>
+                <th style="color:#009CFF;">Surface</th>
+                <th style="color:#009CFF;">Description</th>
+                <th style="color:#009CFF;">lieu</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for terrain in terrains %}
+            <tr>
+                <td>{{ terrain.idTerrain }}</td>
+                <td>{{ terrain.nomTerrain }}</td>
+                <td>{{ terrain.surfaceTerrain }}</td>
+                <td>{{ terrain.descriptionTerrain }}</td>
+                <td>{{ terrain.lieu }}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</body>
+</html>

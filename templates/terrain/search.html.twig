@@ -1,0 +1,48 @@
+{% extends 'frontoffice.html.twig' %}
+{% block title %}Liste des terrains {% endblock %}
+
+{% block body %}
+ <!-- Service Start -->
+    <div class="service">
+  <div class="container">
+    <div class="section-header text-center">
+      <h1 style="margin-bottom:40px;margin-top:-170px; color:#ed174a;">Liste des Terrains</h1>
+    </div> 
+    
+    <div class="row">
+      {% for terrain in terrains %}
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="service-item">
+          <img src="{{ asset('uploads/' ~terrain.imageTerrain) }}" style=" width:360px; height:250px; " alt="">
+          <center><h2 >{{ terrain.descriptionTerrain }}</h2></center>
+         <center> <a href="{{ path('app_terrain_frontShow', {'idTerrain': terrain.idTerrain}) }}" class="btn btn-primary">SHOW</a></center>
+         <center> <a href="{{ path('app_reservation_newfront') }}" class="btn btn-primary">Réserver</a></center>
+         <center> <a  class="btn btn-primary">Voir dans la map</a></center>
+
+        </div>
+      </div>
+      {% else %}
+      <div class="col">
+        <p class="text-center">Aucun terrain trouvé.</p>
+        
+      </div>
+      {% endfor %}
+        
+    </div>
+    <div >	   <center> <a href="{{ path('app_terrain_front') }}" class="btn btn-primary">back to list</a></center>
+                        </div>  
+    <div style="margin-law:20px;">
+        <a class="btn btn-info" href="{{ path('order_By_Nom')}}"> Trier Par Nom </a>
+        </div>
+        
+        <div style="margin-law:20px;">
+        <a class="btn btn-info" href="{{ path('order_By_Description')}}">Trier Par Description  </a>
+        </div>
+        <div style="margin-left:1000px;">
+            <a class="btn btn-info" href="{{path('app_terrain_pdf')}}"> Exporter PDF </a>
+         </div>
+  </div>
+</div>
+    <!-- Service End -->
+    
+{% endblock %}

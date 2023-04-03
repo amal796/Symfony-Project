@@ -1,0 +1,21 @@
+{% extends 'frontoffice.html.twig' %}
+
+{% block title %}New Reservation{% endblock %}
+
+{% block body %}
+
+  <div id="form">
+    <form>
+        <h1 >Remplir la formulaire pour Réserver le Terrain</h1>
+        <table width="100%" border ="1" cellspacing="1" cellpadding="1">
+            <div class="center">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-item">
+                        {{ include('reservation/_form.html.twig') }}
+                    </div>
+                </div>
+            </div>
+        </table>
+    </form>
+</div>
+{% endblock %}
